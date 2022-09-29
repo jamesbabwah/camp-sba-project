@@ -44,7 +44,7 @@ class Camper:
         campers.append(self)
 
     def __repr__(self) -> str:
-        return f"Name: {self.name}, Sports played: {', '.join(self.sports)}, Total Fee: ${self.discounted_fee}"
+        return f"{self.name:<20}{', '.join(self.sports):<40}{self.discounted_fee:<10}"
 
    
         
@@ -60,10 +60,19 @@ while taking_input:
     if counter >= 5:
         if input("Enter y to continue adding campers or n to stop\n") == "n":
             taking_input = False
+
     
 
-print("List of campers:")
-print(*campers, sep="\n")
+print("\nList of campers")
+print(f"{'Name':<20}{'Sports played':<40}{'Total fee':<10}")
+print(*campers, sep="\n",end="\n\n")
+
+print(f"{'Sport':<20}{'Amount of Campers registered':<40}{'Total paid in sport':<20}")
+print(f"{'Football':<20}{len(football_players):<40}${len(football_players) * FOOTBALL_PRICE * 0.9:.2f}")
+print(f"{'Basketball':<20}{len(basketball_players):<40}${len(basketball_players) * BASKETBALL_PRICE * 0.9:.2f}")
+print(f"{'Netball':<20}{len(netball_players):<40}${len(netball_players) * NETBALL_PRICE * 0.9:.2f}")
+print(f"{'Hockey':<20}{len(hockey_players):<40}${len(hockey_players) * HOCKEY_PRICE * 0.9:.2f}")
+print(f"{'Swimming':<20}{len(swimming_players):<40}${len(swimming_players) * SWIMMING_PRICE * 0.9:.2f}")
 
 
 
