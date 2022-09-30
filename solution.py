@@ -1,23 +1,35 @@
-#constants
+#constants declarations
 FOOTBALL_PRICE = 120
 BASKETBALL_PRICE = 200
 NETBALL_PRICE = 225
 HOCKEY_PRICE = 275
 SWIMMING_PRICE = 300
 
+#Global list of campers playing each sport
 football_players = []
 basketball_players = []
 netball_players = []
 hockey_players = []
 swimming_players = []
 
+#Global list of campers
 campers = []
 
+
 class Camper:
+    #Member declarations
     name: str
     sports: list[str]
+    discounted_fee: float
 
     def __init__(self, camper_name, sports) -> None:
+        """
+        Creates a camper object from the camper's name and the sports they registered for.
+        The total fee after discount will also be calculated according to the sports registered for.
+
+        The camper's name will be stored in the respective global list of campers for each sport. 
+        The camper object, storing camper's name, sports signed up for, and total fee after discount will be added to the global list of campers
+        """
         self.name = camper_name
         self.sports = sports   
 
@@ -44,7 +56,7 @@ class Camper:
         campers.append(self)
 
     def __repr__(self) -> str:
-        return f"{self.name:<20}{', '.join(self.sports):<40}{self.discounted_fee:<10}"
+        return f"{self.name:<20}{', '.join(self.sports):<40}${self.discounted_fee:.2f}"
 
    
         
@@ -53,7 +65,7 @@ counter = 0
 
 while taking_input:
     current_camper_name = input("Enter the name of the camper:\n")
-    current_camper_sports = [sport.strip() for sport in input("Enter the sports the camper registered for separated by a comma:\n").split(",")]
+    current_camper_sports = [sport.strip().lower() for sport in input("Enter the sports the camper registered for separated by a comma:\n").split(",")]
     Camper(current_camper_name, current_camper_sports)
 
     counter+=1
@@ -73,6 +85,5 @@ print(f"{'Basketball':<20}{len(basketball_players):<40}${len(basketball_players)
 print(f"{'Netball':<20}{len(netball_players):<40}${len(netball_players) * NETBALL_PRICE * 0.9:.2f}")
 print(f"{'Hockey':<20}{len(hockey_players):<40}${len(hockey_players) * HOCKEY_PRICE * 0.9:.2f}")
 print(f"{'Swimming':<20}{len(swimming_players):<40}${len(swimming_players) * SWIMMING_PRICE * 0.9:.2f}")
-
 
 
