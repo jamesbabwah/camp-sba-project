@@ -4,6 +4,7 @@ BASKETBALL_PRICE = 200
 NETBALL_PRICE = 225
 HOCKEY_PRICE = 275
 SWIMMING_PRICE = 300
+SPORTS = ["football", "basketball", "netball", "hockey", "swimming"]
 
 #Global list of campers playing each sport
 football_players = []
@@ -27,11 +28,10 @@ class Camper:
         Creates a camper object from the camper's name and the sports they registered for.
         The total fee after discount will also be calculated according to the sports registered for.
 
-        The camper's name will be stored in the respective global list of campers for each sport. 
-        The camper object, storing camper's name, sports signed up for, and total fee after discount will be added to the global list of campers
+        The camper's name will be stored in the respective global list of campers for each sport.
         """
         self.name = camper_name
-        self.sports = sports   
+        self.sports = sports
 
         total_fee = 0
         for sport in self.sports:
@@ -53,28 +53,50 @@ class Camper:
                     total_fee += SWIMMING_PRICE
         self.discounted_fee = total_fee * 0.9
 
-        campers.append(self)
 
     def __repr__(self) -> str:
+        """
+        Formats camper's name, sports played and fee into one string for outputting data neatly
+        """
         return f"{self.name:<20}{', '.join(self.sports):<40}${self.discounted_fee:.2f}"
 
-   
-        
+
 taking_input = True
-counter = 0
 
 while taking_input:
     current_camper_name = input("Enter the name of the camper:\n")
-    current_camper_sports = [sport.strip().lower() for sport in input("Enter the sports the camper registered for separated by a comma:\n").split(",")]
-    Camper(current_camper_name, current_camper_sports)
+    current_camper_sports = []
 
-    counter+=1
-    if counter >= 5:
-        if input("Enter y to continue adding campers or n to stop\n") == "n":
+    for sport in SPORTS:
+        while True:
+            is_playing_sport = input(f"Will {current_camper_name} be playing {sport}? Enter y for yes and n for no.\n").strip().lower()
+            if is_playing_sport == "y":
+                current_camper_sports.append(sport)
+                break
+            elif is_playing_sport == "n":
+                break
+            else: 
+                print(f"'{is_playing_sport}' is not a valid option, please enter y or n")
+                continue
+
+    
+    current_camper = Camper(current_camper_name, current_camper_sports)
+
+    campers.append(current_camper)
+    
+    while True:
+        inputting_more = input("Enter y to continue adding campers or n to stop\n")
+        if inputting_more == "y":
+            break
+        elif inputting_more == "n":
             taking_input = False
+            break
+        else:
+            print(f"'{inputting_more}' is not a valid option, please enter y or n")
 
     
 
+#Outputs all the information in a table
 print("\nList of campers")
 print(f"{'Name':<20}{'Sports played':<40}{'Total fee':<10}")
 print(*campers, sep="\n",end="\n\n")
