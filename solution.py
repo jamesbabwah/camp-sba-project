@@ -81,7 +81,6 @@ while taking_input:
 
     
     current_camper = Camper(current_camper_name, current_camper_sports)
-
     campers.append(current_camper)
     
     while True:
