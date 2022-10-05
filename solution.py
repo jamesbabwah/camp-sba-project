@@ -58,7 +58,7 @@ class Camper:
         """
         Formats camper's name, sports played and fee into one string for outputting data neatly
         """
-        return f"{self.name:<20}{', '.join(self.sports):<40}${self.discounted_fee:.2f}"
+        return f"{self.name:<20}{', '.join(self.sports):<40}${self.total_fee:.2f}"
 
 
 taking_input = True
@@ -82,7 +82,7 @@ while taking_input:
     
     current_camper = Camper(current_camper_name, current_camper_sports)
     campers.append(current_camper)
-    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.discounted_fee:.2f} after discount\n")
+    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount\n")
     
     while True:
         inputting_more = input("Enter y to continue adding campers or n to stop\n")
