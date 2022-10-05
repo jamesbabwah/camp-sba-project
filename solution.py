@@ -1,9 +1,9 @@
 #constants declarations
-FOOTBALL_PRICE = 120
-BASKETBALL_PRICE = 200
-NETBALL_PRICE = 225
-HOCKEY_PRICE = 275
-SWIMMING_PRICE = 300
+FOOTBALL_PRICE = 120 * 0.9
+BASKETBALL_PRICE = 200 * 0.9
+NETBALL_PRICE = 225 * 0.9
+HOCKEY_PRICE = 275 * 0.9
+SWIMMING_PRICE = 300 * 0.9
 SPORTS = ["football", "basketball", "netball", "hockey", "swimming"]
 
 #Global list of campers playing each sport
@@ -21,37 +21,37 @@ class Camper:
     #Member declarations
     name: str
     sports: list[str]
-    discounted_fee: float
+    total_fee: float
 
-    def __init__(self, camper_name, sports) -> None:
+    def __init__(self, name, sports) -> None:
         """
         Creates a camper object from the camper's name and the sports they registered for.
         The total fee after discount will also be calculated according to the sports registered for.
 
         The camper's name will be stored in the respective global list of campers for each sport.
         """
-        self.name = camper_name
+        self.name = name
         self.sports = sports
 
         total_fee = 0
         for sport in self.sports:
             match sport:
                 case "football":
-                    football_players.append(camper_name)
+                    football_players.append(name)
                     total_fee += FOOTBALL_PRICE
                 case "basketball":
-                    basketball_players.append(camper_name)
+                    basketball_players.append(name)
                     total_fee += BASKETBALL_PRICE
                 case "netball":
-                    netball_players.append(camper_name)
+                    netball_players.append(name)
                     total_fee += NETBALL_PRICE
                 case "hockey":
-                    hockey_players.append(camper_name)
+                    hockey_players.append(name)
                     total_fee += HOCKEY_PRICE
                 case "swimming":
-                    swimming_players.append(camper_name)
+                    swimming_players.append(name)
                     total_fee += SWIMMING_PRICE
-        self.discounted_fee = total_fee * 0.9
+        self.total_fee = total_fee
 
 
     def __repr__(self) -> str:
@@ -82,6 +82,7 @@ while taking_input:
     
     current_camper = Camper(current_camper_name, current_camper_sports)
     campers.append(current_camper)
+    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.discounted_fee:.2f} after discount\n")
     
     while True:
         inputting_more = input("Enter y to continue adding campers or n to stop\n")
@@ -101,10 +102,10 @@ print(f"{'Name':<20}{'Sports played':<40}{'Total fee':<10}")
 print(*campers, sep="\n",end="\n\n")
 
 print(f"{'Sport':<20}{'Amount of Campers registered':<40}{'Total paid in sport':<20}")
-print(f"{'Football':<20}{len(football_players):<40}${len(football_players) * FOOTBALL_PRICE * 0.9:.2f}")
-print(f"{'Basketball':<20}{len(basketball_players):<40}${len(basketball_players) * BASKETBALL_PRICE * 0.9:.2f}")
-print(f"{'Netball':<20}{len(netball_players):<40}${len(netball_players) * NETBALL_PRICE * 0.9:.2f}")
-print(f"{'Hockey':<20}{len(hockey_players):<40}${len(hockey_players) * HOCKEY_PRICE * 0.9:.2f}")
-print(f"{'Swimming':<20}{len(swimming_players):<40}${len(swimming_players) * SWIMMING_PRICE * 0.9:.2f}")
+print(f"{'Football':<20}{len(football_players):<40}${len(football_players) * FOOTBALL_PRICE:.2f}")
+print(f"{'Basketball':<20}{len(basketball_players):<40}${len(basketball_players) * BASKETBALL_PRICE:.2f}")
+print(f"{'Netball':<20}{len(netball_players):<40}${len(netball_players) * NETBALL_PRICE:.2f}")
+print(f"{'Hockey':<20}{len(hockey_players):<40}${len(hockey_players) * HOCKEY_PRICE:.2f}")
+print(f"{'Swimming':<20}{len(swimming_players):<40}${len(swimming_players) * SWIMMING_PRICE:.2f}")
 
 
