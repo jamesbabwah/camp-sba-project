@@ -23,35 +23,35 @@ class Camper:
     sports: list[str]
     total_fee: float
 
-    def __init__(self, name, sports) -> None:
+    def __init__(self, camper_name, camper_sports) -> None:
         """
         Creates a camper object from the camper's name and the sports they registered for.
         The total fee after discount will also be calculated according to the sports registered for.
 
         The camper's name will be stored in the respective global list of campers for each sport.
         """
-        self.name = name
-        self.sports = sports
+        self.name = camper_name
+        self.sports = camper_sports
 
-        total_fee = 0
+        self.total_fee = 0
         for sport in self.sports:
             match sport:
                 case "football":
-                    football_players.append(name)
-                    total_fee += FOOTBALL_PRICE
+                    football_players.append(camper_name)
+                    self.total_fee += FOOTBALL_PRICE
                 case "basketball":
-                    basketball_players.append(name)
-                    total_fee += BASKETBALL_PRICE
+                    basketball_players.append(camper_name)
+                    self.total_fee += BASKETBALL_PRICE
                 case "netball":
-                    netball_players.append(name)
-                    total_fee += NETBALL_PRICE
+                    netball_players.append(camper_name)
+                    self.total_fee += NETBALL_PRICE
                 case "hockey":
-                    hockey_players.append(name)
-                    total_fee += HOCKEY_PRICE
+                    hockey_players.append(camper_name)
+                    self.total_fee += HOCKEY_PRICE
                 case "swimming":
-                    swimming_players.append(name)
-                    total_fee += SWIMMING_PRICE
-        self.total_fee = total_fee
+                    swimming_players.append(camper_name)
+                    self.total_fee += SWIMMING_PRICE
+  
 
 
     def __repr__(self) -> str:
@@ -64,10 +64,17 @@ class Camper:
 taking_input = True
 
 while taking_input:
+    """
+    The following variables are used to initialize current_camper
+    """
     current_camper_name = input("Enter the name of the camper:\n")
     current_camper_sports = []
 
     for sport in SPORTS:
+        """
+        Will keep asking for a y or n
+        If y is inputted the value of sport in the current iteration will be added to the sports of the current camper
+        """
         while True:
             is_playing_sport = input(f"Will {current_camper_name} be playing {sport}? Enter y for yes and n for no.\n").strip().lower()
             if is_playing_sport == "y":
@@ -79,13 +86,21 @@ while taking_input:
                 print(f"'{is_playing_sport}' is not a valid option, please enter y or n")
                 continue
 
-    
+    """
+    A camper object is created and added to the list of campers
+    The program then outputs the current camper's name, lists the sports the current camper registered for and outputs the camper's total fee after discount
+    """
     current_camper = Camper(current_camper_name, current_camper_sports)
     campers.append(current_camper)
     print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount\n")
-    
+
+    """
+    Will keep asking for a y or n until one is provided
+    If y is inputted the program will ask for another camper's data
+    If n is inputted taking_input will be set to false and the program will stop asking for new camper's data
+    """
     while True:
-        inputting_more = input("Enter y to continue adding campers or n to stop\n")
+        inputting_more = input("Enter y to continue adding campers or n to stop\n").lower()
         if inputting_more == "y":
             break
         elif inputting_more == "n":
@@ -96,11 +111,16 @@ while taking_input:
 
     
 
-#Outputs all the information in a table
+"""
+Each camper's name, sports and total fee is outputted in a table with a blank line after
+"""
 print("\nList of campers")
 print(f"{'Name':<20}{'Sports played':<40}{'Total fee':<10}")
 print(*campers, sep="\n",end="\n\n")
 
+"""
+Outputs the amount of campers registered and total money earned in each sport 
+"""
 print(f"{'Sport':<20}{'Amount of Campers registered':<40}{'Total paid in sport':<20}")
 print(f"{'Football':<20}{len(football_players):<40}${len(football_players) * FOOTBALL_PRICE:.2f}")
 print(f"{'Basketball':<20}{len(basketball_players):<40}${len(basketball_players) * BASKETBALL_PRICE:.2f}")

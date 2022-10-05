@@ -1,9 +1,9 @@
 START
-    int FOOTBALL_PRICE = 120
-    int BASKETBALL_PRICE = 200
-    int NETBALL_PRICE = 225
-    int HOCKEY_PRICE = 275
-    int SWIMMING_PRICE = 300
+    int FOOTBALL_PRICE = 120 * 0.9
+    int BASKETBALL_PRICE = 200 * 0.9
+    int NETBALL_PRICE = 225 * 0.9
+    int HOCKEY_PRICE = 275 * 0.9
+    int SWIMMING_PRICE = 300 * 0.9
     string SPORTS = ["football", "basketball", "netball", "hockey", "swimming"]
 
     list football_players
@@ -12,10 +12,12 @@ START
     list hockey_players
     list swimming_players
 
+    list campers
+
     class Camper
         string name
         list sports
-        float discounted_fee
+        float total_fee
 
         function initializer(string camper_name, list camper_sports)
             name = camper_name
@@ -40,8 +42,6 @@ START
                         total_fee += SWIMMING_PRICE
                  endmatch
             endfor
-
-            discounted_fee = total_fee * 0.9
         endfunction
 
     endclass
@@ -52,13 +52,14 @@ START
         list current_camper_sports
         string current_camper_name
 
+        output "Enter the name of the camper"
         input current_camper_name
 
         for each sport in sports do
             while true
-                output "Will ", current_camper_name, " be playing", sport, "?"
-
                 string is_playing_sport
+
+                output "Will ", current_camper_name, " be playing", sport, "?"
                 input is_playing_sport
 
                 if is_playing_sport == "y"
@@ -73,8 +74,9 @@ START
         endfor
 
         Camper current_camper = Camper(current_camper_name, current_camper_sports)
-
         campers.append(current_camper)
+
+        output current_camper.name, " registered for", current_camper.sports, "total fee is ", current_camper.total_fee
 
         while true
             string is_inputting_more
@@ -92,8 +94,15 @@ START
     endwhile
 
     output "List of campers:"
-
-
-
-
+    output "Name                Sports played                           Total fee"
+    for each camper in campers do
+        output camper.name, camper.sports, camper.total_fee
+    endfor
+    
+    output "Sport               Amount of Campers registered            Total paid in sport"
+    output "Football", length of football_players, length of football_players * FOOTBALL_PRICE
+    output "Basketball", length of basketball_players, length of basketball_players * BASKETBALL_PRICE
+    output "Netball", length of netball_players, length of netball_players * NETBALL_PRICE
+    output "Hockey", length of hockey_players, length of hockey_players * HOCKEY_PRICE
+    output "Swimming", length of swimming_players, length of swimming_players * SWIMMING_PRICE
 END
