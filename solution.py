@@ -1,3 +1,6 @@
+def log(line, info: str):
+    with open("trace.txt", "a") as f:
+        f.write(f"line {line} {info}\n");f.close() #3
 #constants declarations
 FOOTBALL_PRICE = 120 * 0.9
 BASKETBALL_PRICE = 200 * 0.9
@@ -61,28 +64,31 @@ class Camper:
         return f"{self.name:<20}{', '.join(self.sports):<40}${self.total_fee:.2f}"
 
 
-taking_input = True
+taking_input = True; log(64, f"taking_input = {taking_input}")
 
 while taking_input:
     """
     The following variables are used to initialize current_camper
     """
-    current_camper_name = input("Enter the name of the camper:\n")
-    current_camper_sports = []
+    current_camper_name = input("Enter the name of the camper:\n");log(70, f"OUTPUT: Enter the name of the camper:");log(70, f"current_camper_name = {current_camper_name}")
+    current_camper_sports = [];log(71, f"current_camper_sports = {current_camper_sports}")
 
     for sport in SPORTS:
+        log(73, f"sport = {sport}") #4
         """
         Will keep asking for a y or n
         If y is inputted the value of sport in the current iteration will be added to the sports of the current camper
         """
         while True:
-            is_playing_sport = input(f"Will {current_camper_name} be playing {sport}? Enter y for yes and n for no.\n").strip().lower()
+            is_playing_sport = input(f"Will {current_camper_name} be playing {sport}? Enter y for yes and n for no.\n").strip().lower();log(79, f"OUTPUT: Will {current_camper_name} be playing {sport}? Enter y for yes and n for no.");log(79, f"is_playing_sport = {is_playing_sport}")
             if is_playing_sport == "y":
-                current_camper_sports.append(sport)
+                log(81, f"(is_playing_sport == 'y') = true") #5
+                current_camper_sports.append(sport);log(81, f"current_camper_sports = {current_camper_sports}")
                 break
             elif is_playing_sport == "n":
+                log(83, f"(is_playing_sport == 'n') = true") #6
                 break
-            else: 
+            else:
                 print(f"'{is_playing_sport}' is not a valid option, please enter y or n")
                 continue
 
@@ -90,9 +96,9 @@ while taking_input:
     A camper object is created and added to the list of campers
     The program then outputs the current camper's name, lists the sports the current camper registered for and outputs the camper's total fee after discount
     """
-    current_camper = Camper(current_camper_name, current_camper_sports)
-    campers.append(current_camper)
-    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount\n")
+    current_camper = Camper(current_camper_name, current_camper_sports);log(93, f"football_players = {football_players}");log(93, f"basketball_players = {basketball_players}");log(93, f"netball_players = {netball_players}");log(93, f"hockey_players = {hockey_players}");log(93, f"swimming_players = {swimming_players}")
+    campers.append(current_camper);log(94, f"campers = {[camper.name for camper in campers]}")
+    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount\n");log(95, f"OUTPUT: {current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount")
 
     """
     Will keep asking for a y or n until one is provided
@@ -100,11 +106,13 @@ while taking_input:
     If n is inputted taking_input will be set to false and the program will stop asking for new camper's data
     """
     while True:
-        inputting_more = input("Enter y to continue adding campers or n to stop\n").lower()
+        inputting_more = input("Enter y to continue adding campers or n to stop\n").lower();log(103, "OUTPUT: Enter y to continue adding campers or n to stop"); log(103, f"inputting_more = {inputting_more}")
         if inputting_more == "y":
+            log(111-6, f"(inputting_more == 'y') = true") #7
             break
         elif inputting_more == "n":
-            taking_input = False
+            log(114 - 7, f"inputting_more == 'n') = true") #8
+            taking_input = False; log(107, f"taking_input = {taking_input}")
             break
         else:
             print(f"'{inputting_more}' is not a valid option, please enter y or n")

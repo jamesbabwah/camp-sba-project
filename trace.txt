@@ -1,0 +1,103 @@
+Test 1:
+Testing the program by entering a name and ‘n’ every time the user is prompted to for one iteration
+
+line 64 taking_input = True
+line 70 OUTPUT: Enter the name of the camper:
+line 70 current_camper_name = Ivan Sanders
+line 71 current_camper_sports = []
+line 73 sport = football
+line 79 OUTPUT: Will Ivan Sanders be playing football? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = basketball
+line 79 OUTPUT: Will Ivan Sanders be playing basketball? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = netball
+line 79 OUTPUT: Will Ivan Sanders be playing netball? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = hockey
+line 79 OUTPUT: Will Ivan Sanders be playing hockey? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = swimming
+line 79 OUTPUT: Will Ivan Sanders be playing swimming? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 93 football_players = []
+line 93 basketball_players = []
+line 93 netball_players = []
+line 93 hockey_players = []
+line 93 swimming_players = []
+line 94 campers = ['Ivan Sanders']
+line 95 OUTPUT: Ivan Sanders registered for , total fee is $0.00 after discount
+line 103 OUTPUT: Enter y to continue adding campers or n to stop
+line 103 inputting_more = n
+line 107 inputting_more == 'n') = true
+line 107 taking_input = False
+
+Final Output:
+List of campers
+Name                Sports played                           Total fee 
+Ivan Sanders                                                $0.00
+
+Sport               Amount of Campers registered            Total paid in sport 
+Football            0                                       $0.00
+Basketball          0                                       $0.00
+Netball             0                                       $0.00
+Hockey              0                                       $0.00
+Swimming            0                                       $0.00
+
+Test 2:
+Testing the program by entering normal data for one iteration
+line 64 taking_input = True
+line 70 OUTPUT: Enter the name of the camper:
+line 70 current_camper_name = Adam Smith
+line 71 current_camper_sports = []
+line 73 sport = football
+line 79 OUTPUT: Will Adam Smith be playing football? Enter y for yes and n for no.
+line 79 is_playing_sport = y
+line 81 (is_playing_sport == 'y') = true
+line 81 current_camper_sports = ['football']
+line 73 sport = basketball
+line 79 OUTPUT: Will Adam Smith be playing basketball? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = netball
+line 79 OUTPUT: Will Adam Smith be playing netball? Enter y for yes and n for no.
+line 79 is_playing_sport = n
+line 83 (is_playing_sport == 'n') = true
+line 73 sport = hockey
+line 79 OUTPUT: Will Adam Smith be playing hockey? Enter y for yes and n for no.
+line 79 is_playing_sport = y
+line 81 (is_playing_sport == 'y') = true
+line 81 current_camper_sports = ['football', 'hockey']
+line 73 sport = swimming
+line 79 OUTPUT: Will Adam Smith be playing swimming? Enter y for yes and n for no.
+line 79 is_playing_sport = y
+line 81 (is_playing_sport == 'y') = true
+line 81 current_camper_sports = ['football', 'hockey', 'swimming']
+line 93 football_players = ['Adam Smith']
+line 93 basketball_players = []
+line 93 netball_players = []
+line 93 hockey_players = ['Adam Smith']
+line 93 swimming_players = ['Adam Smith']
+line 94 campers = ['Adam Smith']
+line 95 OUTPUT: Adam Smith registered for football, hockey, swimming, total fee is $625.50 after discount
+line 103 OUTPUT: Enter y to continue adding campers or n to stop
+line 103 inputting_more = n
+line 107 inputting_more == 'n') = true
+line 107 taking_input = False
+
+Final Output:
+List of campers
+Name                Sports played                           Total fee 
+Adam Smith          football, hockey, swimming              $625.50
+
+Sport               Amount of Campers registered            Total paid in sport 
+Football            1                                       $108.00
+Basketball          0                                       $0.00
+Netball             0                                       $0.00
+Hockey              1                                       $247.50
+Swimming            1                                       $270.00
