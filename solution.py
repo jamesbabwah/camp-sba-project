@@ -92,7 +92,7 @@ while taking_input:
     """
     current_camper = Camper(current_camper_name, current_camper_sports)
     campers.append(current_camper)
-    print(f"{current_camper.name} registered for {', '.join(current_camper.sports)}, total fee is ${current_camper.total_fee:.2f} after discount\n")
+    print(f"{current_camper.name} registered for {', '.join(current_camper.sports) if current_camper.sports else 'no sports'}, total fee is ${current_camper.total_fee:.2f} after discount\n")
 
     """
     Will keep asking for a y or n until one is provided
