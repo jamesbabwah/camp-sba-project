@@ -31,7 +31,7 @@ line 93 netball_players = []
 line 93 hockey_players = []
 line 93 swimming_players = []
 line 94 campers = ['Ivan Sanders']
-line 95 OUTPUT: Ivan Sanders registered for , total fee is $0.00 after discount
+line 95 OUTPUT: Ivan Sanders registered for no sports, total fee is $0.00 after discount
 line 103 OUTPUT: Enter y to continue adding campers or n to stop
 line 103 inputting_more = n
 line 107 inputting_more == 'n') = true
